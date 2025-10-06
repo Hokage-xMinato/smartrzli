@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Admin Login</title>
+</head>
+<body>
+  <h2>Admin Panel</h2>
+  {% if error %}<p style="color:red">{{ error }}</p>{% endif %}
+  {% if success %}
+    <p>✅ Logged in successfully</p>
+    <p>Data auto-refreshes every minute.</p>
+  {% else %}
+    <form method="post">
+      <input type="password" name="password" placeholder="Password" required />
+      <button type="submit">Login</button>
+    </form>
+  {% endif %}
+</body>
+</html>
