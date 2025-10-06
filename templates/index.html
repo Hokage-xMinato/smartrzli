@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Team Smartrz</title>
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+  <h1>🎓 Team Smartrz - Live Lectures</h1>
+  <div class="tabs">
+    <button onclick="showTab('live')">Live</button>
+    <button onclick="showTab('up')">Upcoming</button>
+    <button onclick="showTab('completed')">Recorded</button>
+  </div>
+
+  <div id="live" class="tab active">
+    {% for item in live.data %}
+      <div class="card">
+        <img src="{{ item.image }}" alt="">
+        <h3>{{ item.title }}</h3>
+        <p>{{ item.batch }}</p>
+        <a href="/watch?url={{ item.link }}" target="_blank">Watch Now</a>
+      </div>
+    {% endfor %}
+  </div>
+
+  <div id="up" class="tab">
+    {% for item in up.data %}
+      <div class="card">
+        <img src="{{ item.image }}" alt="">
+        <h3>{{ item.title }}</h3>
+        <p>{{ item.batch }}</p>
+        <a href="/watch?url={{ item.link }}" target="_blank">Watch Now</a>
+      </div>
+    {% endfor %}
+  </div>
+
+  <div id="completed" class="tab">
+    {% for item in completed.data %}
+      <div class="card">
+        <img src="{{ item.image }}" alt="">
+        <h3>{{ item.title }}</h3>
+        <p>{{ item.batch }}</p>
+        <a href="/watch?url={{ item.link }}" target="_blank">Watch Now</a>
+      </div>
+    {% endfor %}
+  </div>
+
+  <footer>Proudly powered by <b>Team Smartrz</b></footer>
+
+  <script>
+  function showTab(tab) {
+    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+    document.getElementById(tab).classList.add('active');
+  }
+  </script>
+</body>
+</html>
